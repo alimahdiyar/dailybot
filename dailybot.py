@@ -75,7 +75,7 @@ if __name__ == '__main__':
 
     while True:
         now = JalaliDatetime.now()
-        if now.minute == 7 and now.hour == 12:
+        if now.minute == 59 and now.hour == 23:
             if day_message_was_sent != now.day:
                 bot.sendMessage(channel_id,
                                 now.weekdayname() + '\n' + dayrep(now.day) + ' ' + now.monthname() + ' ' + words(
