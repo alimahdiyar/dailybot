@@ -56,12 +56,13 @@ def dayrep(day):
     return 'سی و ' + dayrep(day % 10)
 
 
-day_message_was_sent = -1
+day_message_was_sent = 9
 
 
 def message_handler(msg):
     global day_message_was_sent
     content_type, chat_type, chat_id = telepot.glance(msg)
+    print(chat_id)
     if (chat_id == channel_id):
         day_message_was_sent = JalaliDatetime.now().day
 
@@ -75,7 +76,9 @@ if __name__ == '__main__':
 
     while True:
         now = JalaliDatetime.now()
-        if now.minute == 59 and now.hour == 23:
+        print(now.hour)
+        print(now.minute)
+        if now.minute == 56 and now.hour == 23:
             if day_message_was_sent != now.day:
                 bot.sendMessage(channel_id,
                                 now.weekdayname() + '\n' + dayrep(now.day) + ' ' + now.monthname() + ' ' + words(
